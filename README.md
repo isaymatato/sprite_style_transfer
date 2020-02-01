@@ -1,5 +1,6 @@
 # Sprite style transfer
 
+Fast neural style transfer of RGBA sprite images. 
 Transform the style of a sprite sheet from one platform to another!
 
 ![NES to SNES sprite conversion example](/assets/mm9_example_output.png?cachebust=1)
@@ -39,3 +40,6 @@ Different models will output differently styled sprites. It helps if the model w
 ![Style examples](/assets/style_examples.png?cachebust=1)
 
 From top to bottom: Original image, styled using a model trained on Megaman 8, styled using a model trained on Castlevania SOTN
+
+## References
+[Fast Neural Style Transfer in PyTorch](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer) (I used this project as a starting point)
