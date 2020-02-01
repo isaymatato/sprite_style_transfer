@@ -18,6 +18,7 @@ def style_image(image_path,
     image = Image.open(image_path)
     width, height = image.size
     alpha = image.convert('RGBA').split()[-1]
+
     # @TODO - import the mean color...
     mean_color = Image.new("RGB", image.size, (124, 116, 103))
 
@@ -49,16 +50,13 @@ def style_image(image_path,
     # Stylize image
     with torch.no_grad():
         output_tensor = depro(transformer(image_tensor))
-        # alt_image = denormalize(transformer(image_tensor)).cpu()
 
     stylized_image = F.to_pil_image(output_tensor) \
         .convert('RGBA') \
         .crop((0, 0, width, height))
 
     stylized_image.putalpha(alpha)
-    # Save image
     stylized_image.save(f"images/outputs/{model_name}/{image_filename}", 'PNG')
-    # save_image(alt_image, f"images/outputs/{model_name}/{image_filename}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
